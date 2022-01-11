@@ -1,0 +1,25 @@
+﻿@model IEnumerable<InventoryPortal.Models.Location>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>LocationName</th>
+        <th>Remarks</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+        
+            <td>@Html.DisplayFor(modelItem => item.LocationName)</td>
+        
+            <td>@Html.DisplayFor(modelItem => item.Remarks)</td>
+        </tr>
+    }
+</table>
