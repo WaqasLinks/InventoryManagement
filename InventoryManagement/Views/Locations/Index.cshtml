@@ -1,4 +1,4 @@
-﻿@model IEnumerable<InventoryPortal.Models.Location>
+@model IEnumerable<InventoryPortal.Models.Location>
 @{
     ViewBag.Title = "Index";
 }
@@ -8,26 +8,48 @@
 
 @*<a href="/Locations/Create" class="btn btn-info">Add New</a>*@
 
-<table>
+<table id="example" class="display" style="width:100%">
+  <thead>
     <tr>
-        <th>Id</th>
-        <th>LocationName</th>
-        <th>Remarks</th>
-        <th></th>
+      <th>Id</th>
+      <th>LocationName</th>
+      <th>Remarks</th>
+      <th></th>
     </tr>
+  </thead>
+  <tbody>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+      <tr>
+        <td>@Html.DisplayFor(modelItem => item.Id)</td>
 
-            <td>@Html.DisplayFor(modelItem => item.LocationName)</td>
+        <td>@Html.DisplayFor(modelItem => item.LocationName)</td>
 
-            <td>@Html.DisplayFor(modelItem => item.Remarks)</td>
-            <td>
-                @Html.ActionLink("Update", "Edit", new { id = item.Id }, new { @class = "btn btn-info" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
+        <td>@Html.DisplayFor(modelItem => item.Remarks)</td>
+        <td>
+          @Html.ActionLink("Update", "Edit", new { id = item.Id }, new { @class = "btn btn-info" }) |
+          @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+        </td>
+      </tr>
     }
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Id</th>
+      <th>LocationName</th>
+      <th>Remarks</th>
+      <th></th>
+    </tr>
+  </tfoot>
 </table>
 
+<link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#example').DataTable();
+  });
+
+</script>
